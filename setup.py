@@ -6,6 +6,8 @@ example_module = Extension(
     libraries=['thostmduserapi', 'thosttraderapi']
 )
 
-setup(name='PyCTP',
-      ext_modules=[example_module],
-      py_modules=['PyCTP'])
+setup(
+    name='PyCTP',
+    ext_modules=[example_module],
+    py_modules=['PyCTP'],
+)

@@ -35,9 +35,12 @@
                 $1[i] = PyString_AsString(PyList_GetItem($input,i));
             }
             else {
-                PyErr_SetString(PyExc_TypeError,"list must contain strings");
-                free($1);
-                return NULL;
+                $1[i] = PyUnicode_AsUTF8(PyList_GetItem($input,i));
+                if (!$1[i]) {
+                    PyErr_SetString(PyExc_TypeError,"list must contain strings");
+                    free($1);
+                    return NULL;
+                }
             }
         }
         $1[i] = 0;

@@ -31,22 +31,19 @@
         $1 = (char **)malloc(($2+1)*sizeof(char *));
         for (; i < $2; i++) {
             PyObject *o = PyList_GetItem($input,i);
-            if (PyString_Check(o)) {
-                $1[i] = PyString_AsString(PyList_GetItem($input,i));
+            if (PyUnicode_Check(o)) {
+                $1[i] = PyUnicode_AsUTF8(PyList_GetItem($input,i));
             }
             else {
-                $1[i] = PyUnicode_AsUTF8(PyList_GetItem($input,i));
-                if (!$1[i]) {
-                    PyErr_SetString(PyExc_TypeError,"list must contain strings");
-                    free($1);
-                    return NULL;
-                }
+                free($1);
+                PyErr_SetString(PyExc_TypeError,"list must contain strings");
+                SWIG_fail;
             }
         }
         $1[i] = 0;
     } else {
         PyErr_SetString(PyExc_TypeError, "not a list");
-        return NULL;
+        SWIG_fail;
     }
 }
 

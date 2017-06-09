@@ -1,4 +1,3 @@
-__pycache__
-build
-PyCTP_wrap.*
-PyCTP.py
+/build
+/.idea
+/__pycache__

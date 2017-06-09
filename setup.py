@@ -1,6 +1,6 @@
 from distutils.core import Extension, setup
 
-example_module = Extension(
+pyctp_module = Extension(
     '_PyCTP',
     sources=['./PyCTP_wrap.cxx'],
     libraries=['thostmduserapi', 'thosttraderapi']
@@ -8,6 +8,8 @@ example_module = Extension(
 
 setup(
     name='PyCTP',
-    ext_modules=[example_module],
+    version='0.1',
+    author='hantian.pang',
+    ext_modules=[pyctp_module],
     py_modules=['PyCTP'],
 )

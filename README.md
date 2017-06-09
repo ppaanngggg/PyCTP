@@ -21,6 +21,3 @@ CTP接口的python3封装。使用swig直接转换，接口使用和c++的CTP完
 
 如果需要重新生成swig相关文件，执行`run_swig.sh`
 
-## 例程
-
-[ReceiverCTP](http://120.77.200.225:3000/ppaanngggg/ReceiverCTP)

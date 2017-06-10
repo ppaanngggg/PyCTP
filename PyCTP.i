@@ -1,5 +1,9 @@
 %module(directors="1") PyCTP
 
+%begin %{
+#define SWIG_PYTHON_STRICT_BYTE_CHAR
+%}
+
 %include "typemaps.i"
 
 %{
@@ -31,12 +35,12 @@
         $1 = (char **)malloc(($2+1)*sizeof(char *));
         for (; i < $2; i++) {
             PyObject *o = PyList_GetItem($input,i);
-            if (PyUnicode_Check(o)) {
-                $1[i] = PyUnicode_AsUTF8(PyList_GetItem($input,i));
+            if (PyByteArray_Check(o)) {
+                $1[i] = PyByteArray_AsString(PyList_GetItem($input,i));
             }
             else {
                 free($1);
-                PyErr_SetString(PyExc_TypeError,"list must contain strings");
+                PyErr_SetString(PyExc_TypeError,"list must contain bytes");
                 SWIG_fail;
             }
         }

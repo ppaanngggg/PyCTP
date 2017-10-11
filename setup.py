@@ -8,7 +8,7 @@ pyctp_module = Extension(
 
 setup(
     name='PyCTP',
-    version='0.1',
+    version='0.2',
     author='hantian.pang',
     ext_modules=[pyctp_module],
     py_modules=['PyCTP'],

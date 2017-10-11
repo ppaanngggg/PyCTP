@@ -35,8 +35,8 @@
         $1 = (char **)malloc(($2+1)*sizeof(char *));
         for (; i < $2; i++) {
             PyObject *o = PyList_GetItem($input,i);
-            if (PyByteArray_Check(o)) {
-                $1[i] = PyByteArray_AsString(PyList_GetItem($input,i));
+            if (PyBytes_Check(o)) {
+                $1[i] = PyBytes_AsString(PyList_GetItem($input,i));
             }
             else {
                 free($1);
